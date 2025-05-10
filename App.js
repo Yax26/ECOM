@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import Homepage from "./screens/Homepage";
 import Login from "./screens/Login";
 import SearchedProducts from "./screens/SearchedProducts";
-
+import FilterMenu from "./components/SearchedProducts/FilterMenu";
 export default function App() {
   const [searchedWord, setSearchedWord] = useState("");
   const [searchedData, setSearchedData] = useState([]);
@@ -44,6 +44,7 @@ export default function App() {
   }
   // filters
   if (screen === "filters") {
+    result = <FilterMenu />;
   }
 
   return (
