@@ -7,11 +7,10 @@ import SearchedProducts from "./screens/SearchedProducts";
 export default function App() {
   const [searchedWord, setSearchedWord] = useState("");
   const [searchedData, setSearchedData] = useState([]);
-  const [screen, setScreen] = useState("home");
+  const [screen, setScreen] = useState("filters");
   const [menuVisibility, setMenuVisibility] = useState(false);
 
   let result = "";
-  console.log("app");
 
   if (screen === "home") {
     result = (
@@ -43,6 +42,10 @@ export default function App() {
       />
     );
   }
+  // filters
+  if (screen === "filters") {
+  }
+
   return (
     <View
       style={styles.scrollView}
