@@ -1,20 +1,64 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import Homepage from "./screens/Homepage";
+import Login from "./screens/Login";
+import SearchedProducts from "./screens/SearchedProducts";
 
 export default function App() {
+  const [searchedWord, setSearchedWord] = useState("");
+  const [searchedData, setSearchedData] = useState([]);
+  const [screen, setScreen] = useState("home");
+  const [menuVisibility, setMenuVisibility] = useState(false);
+
+  let result = "";
+  console.log("app");
+
+  if (screen === "home") {
+    result = (
+      <Homepage
+        setScreen={setScreen}
+        searchedWord={searchedWord}
+        setSearchedWord={setSearchedWord}
+        setSearchedData={setSearchedData}
+        menuVisibility={menuVisibility}
+        setMenuVisibility={setMenuVisibility}
+      />
+    );
+  }
+
+  if (screen === "login") {
+    result = <Login setScreen={setScreen} />;
+  }
+
+  if (screen === "searched") {
+    result = (
+      <SearchedProducts
+        searchedWord={searchedWord}
+        setSearchedWord={setSearchedWord}
+        searchedData={searchedData}
+        setSearchedData={setSearchedData}
+        setScreen={setScreen}
+        menuVisibility={menuVisibility}
+        setMenuVisibility={setMenuVisibility}
+      />
+    );
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View
+      style={styles.scrollView}
+      contentContainerStyle={styles.scrollContent}
+      showsVerticalScrollIndicator={false}
+    >
+      {result}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scrollView: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  scrollContent: {
+    flexGrow: 1,
   },
 });
