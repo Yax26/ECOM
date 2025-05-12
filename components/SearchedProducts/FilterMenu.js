@@ -8,10 +8,12 @@ import {
   StyleSheet,
   ScrollView,
   Switch,
+  TouchableOpacity,
 } from "react-native";
 import Slider from "@react-native-community/slider";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { RadioButton } from "react-native-paper";
+import Feather from "react-native-vector-icons/Feather";
 
 function FilterMenu({ visible, setScreen, onClose }) {
   const [price, setPrice] = useState([0, 2000]);
@@ -24,9 +26,9 @@ function FilterMenu({ visible, setScreen, onClose }) {
         <View style={styles.filterBox}>
           <ScrollView>
             <View style={styles.closeButton}>
-              <Pressable onPress={onClose}>
-                <Text style={styles.closeText}>❌</Text>
-              </Pressable>
+              <TouchableOpacity onPress={onClose}>
+                <Feather name="x" size={28} color="black" />
+              </TouchableOpacity>
             </View>
 
             <View style={styles.filterContainer}>
@@ -111,11 +113,6 @@ function FilterMenu({ visible, setScreen, onClose }) {
           </ScrollView>
         </View>
       </View>
-      <View style={styles.buttonOuterContainer}>
-        <Pressable style={styles.buttonInnerContainer}>
-          <Text style={styles.buttonText}>Filters</Text>
-        </Pressable>
-      </View>
     </Modal>
   );
 }
@@ -127,6 +124,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "center",
+    height: "70%",
   },
   filterBox: {
     margin: 20,
@@ -196,18 +194,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
   },
-  buttonOuterContainer: {
-    position: "absolute",
-    bottom: 40,
-    right: 20,
-    borderRadius: 20,
-    overflow: "hidden",
-  },
-  buttonInnerContainer: {
-    backgroundColor: "#210b16",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
+
   buttonText: {
     color: "white",
     fontWeight: "bold",

@@ -9,7 +9,6 @@ function SearchContainer({
   setScreen,
 }) {
   const handleSearch = async () => {
-    console.log(server);
     if (!searchedWord) {
       return Alert.alert("Please enter a product name");
     }
@@ -25,7 +24,6 @@ function SearchContainer({
         }
       );
       const json = await res.json();
-      console.log(json.status.code);
 
       if (json?.status?.code === 200) {
         setScreen("searched");
@@ -36,7 +34,6 @@ function SearchContainer({
         ]);
       }
     } catch (err) {
-      console.log("hii");
       Alert.alert("Network error", err.message);
     }
   };

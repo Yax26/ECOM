@@ -5,9 +5,23 @@ import StarRating from "./StarRating";
 
 import server from "../../constants/server.js";
 
-export default function ProductCard({ title, rating, price, image }) {
+export default function ProductCard({
+  key_id,
+  title,
+  rating,
+  price,
+  image,
+  setScreen,
+  setSelectedProductId,
+}) {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => {
+        setSelectedProductId(key_id);
+        setScreen("product_details");
+      }}
+    >
       <Image
         source={{ uri: `${server.host}${image}` }}
         style={styles.productImage}
@@ -31,7 +45,7 @@ export default function ProductCard({ title, rating, price, image }) {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

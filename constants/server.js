@@ -3,5 +3,3 @@ const server = {
 };
 
 export default server;
-
-console.log();
