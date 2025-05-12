@@ -10,13 +10,12 @@ import {
   Switch,
   TouchableOpacity,
 } from "react-native";
-import Slider from "@react-native-community/slider";
+
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { RadioButton } from "react-native-paper";
 import Feather from "react-native-vector-icons/Feather";
-
+import MultiSliderFilter from "./Multislider";
 function FilterMenu({ visible, setScreen, onClose }) {
-  const [price, setPrice] = useState([0, 2000]);
   const [isSelected, setSelection] = useState({});
   const [value, setValue] = React.useState("first");
 
@@ -26,28 +25,12 @@ function FilterMenu({ visible, setScreen, onClose }) {
         <View style={styles.filterBox}>
           <ScrollView>
             <View style={styles.closeButton}>
-              <TouchableOpacity onPress={onClose}>
+              <Pressable onPress={onClose}>
                 <Feather name="x" size={28} color="black" />
-              </TouchableOpacity>
+              </Pressable>
             </View>
 
-            <View style={styles.filterContainer}>
-              <Text style={styles.sectionTitle}>Price</Text>
-              <Text style={styles.priceText}>
-                ${price[0]} - ${price[1]}
-              </Text>
-              <Slider
-                style={{ width: 200, height: 30 }}
-                minimumValue={0}
-                maximumValue={8000}
-                step={100}
-                minimumTrackTintColor="#3b7df0"
-                maximumTrackTintColor="#d3d3d3"
-                thumbTintColor="#3b7df0"
-                onValueChange={(value) => setPrice([value, 8000])}
-                value={price[0]}
-              />
-            </View>
+            <MultiSliderFilter />
 
             <View style={styles.sortContainer}>
               <Text style={styles.sectionTitle}>SORT BY</Text>
@@ -128,6 +111,7 @@ const styles = StyleSheet.create({
   },
   filterBox: {
     margin: 20,
+
     padding: 10,
     borderWidth: 1,
     borderColor: "#d3d3d3",
@@ -143,7 +127,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     marginTop: 20,
   },
-
   filterContainer: {
     marginBottom: 15,
     borderBottomWidth: 1,
