@@ -5,11 +5,12 @@ import Login from "./screens/Login";
 import SearchedProducts from "./screens/SearchedProducts";
 import FilterMenu from "./components/SearchedProducts/FilterMenu";
 import ProductDetails from "./screens/ProductDetails";
+import ShoppingCart from "./components/CartComponent/ShoppingCart";
 
 export default function App() {
   const [searchedWord, setSearchedWord] = useState("");
   const [searchedData, setSearchedData] = useState([]);
-  const [screen, setScreen] = useState("home");
+  const [screen, setScreen] = useState("cart");
   const [menuVisibility, setMenuVisibility] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -49,6 +50,10 @@ export default function App() {
   // filters
   if (screen === "filters") {
     result = <FilterMenu />;
+  }
+  // Shoppingcart
+  if (screen === "cart") {
+    result = <ShoppingCart />;
   }
 
   if (screen === "product_details") {
