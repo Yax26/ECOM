@@ -23,6 +23,8 @@ function SearchedProducts({
   menuVisibility,
   setMenuVisibility,
   setSelectedProductId,
+  AddToCart,
+  cartIconNumber,
 }) {
   const [filtersVisibility, setFiltersVisibility] = useState(false);
   return (
@@ -50,6 +52,7 @@ function SearchedProducts({
               image={product.product_image}
               setScreen={setScreen}
               setSelectedProductId={setSelectedProductId}
+              AddToCart={AddToCart}
             />
           );
         })}
@@ -84,6 +87,7 @@ function SearchedProducts({
       <BottomOptionMenu
         setMenuVisibility={setMenuVisibility}
         setScreen={setScreen}
+        cartIconNumber={cartIconNumber}
       />
     </View>
   );

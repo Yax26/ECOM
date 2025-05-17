@@ -15,8 +15,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import server from "../constants/server.js";
 
 function Login({ setScreen }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("yaxbarot2605@gmail.com");
+  const [password, setPassword] = useState("Yaxbarot@1826");
 
   function resetHandler() {
     // setEmail("");
@@ -39,7 +39,10 @@ function Login({ setScreen }) {
       const json = await res.json();
 
       if (json?.status?.code === 201) {
-        await AsyncStorage.setItem("token", json?.data?.customer_access_token);
+        await AsyncStorage.setItem(
+          "auth_token",
+          json?.data?.customer_access_token
+        );
         setScreen("home");
       } else {
         Alert.alert("Error", json?.status?.message, [

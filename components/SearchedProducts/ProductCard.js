@@ -13,6 +13,7 @@ export default function ProductCard({
   image,
   setScreen,
   setSelectedProductId,
+  AddToCart,
 }) {
   return (
     <TouchableOpacity
@@ -35,7 +36,12 @@ export default function ProductCard({
         <Text style={styles.price}>${price}</Text>
 
         <View style={styles.actions}>
-          <TouchableOpacity style={styles.cartBtn}>
+          <TouchableOpacity
+            style={styles.cartBtn}
+            onPress={() => {
+              AddToCart(key_id);
+            }}
+          >
             <Feather name="shopping-cart" size={16} color="#fff" />
             <Text style={styles.cartText}>Add To Cart</Text>
           </TouchableOpacity>

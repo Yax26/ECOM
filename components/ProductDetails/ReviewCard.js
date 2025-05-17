@@ -2,16 +2,16 @@ import { View, StyleSheet, Text } from "react-native";
 import StarRating from "../SearchedProducts/StarRating";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-function ReviewCard({ text }) {
+function ReviewCard({ text, rating, customer, date }) {
   return (
     <View style={styles.individualReviewCard}>
       <View style={styles.userDetailsContainer}>
         <FontAwesome name="user" size={20} />
-        <Text style={styles.specificationHeadingText}> Name</Text>
+        <Text style={styles.specificationHeadingText}> {customer}</Text>
       </View>
-      <StarRating rating={4} />
+      <StarRating rating={rating} />
       <Text style={[{ marginVertical: 5, fontWeight: "light" }]}>
-        Reviewed on December 20, 2023
+        Reviewed on {date}
       </Text>
 
       <Text style={styles.specificationText}>{text}</Text>

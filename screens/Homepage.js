@@ -25,6 +25,7 @@ export default function Homepage({
   setSearchedData,
   menuVisibility,
   setMenuVisibility,
+  cartIconNumber,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [homepageData, setHomepageData] = useState("");
@@ -103,6 +104,7 @@ export default function Homepage({
       <BottomOptionMenu
         setMenuVisibility={setMenuVisibility}
         setScreen={setScreen}
+        cartIconNumber={cartIconNumber}
       />
     </ImageBackground>
   );

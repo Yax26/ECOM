@@ -28,6 +28,8 @@ function ProductDetails({
   setMenuVisibility,
   menuVisibility,
   selectedProductId,
+  AddToCart,
+  cartIconNumber,
 }) {
   const [productDetails, setProductDetails] = useState("");
   let extraSpecs;
@@ -240,11 +242,14 @@ function ProductDetails({
             </Text>
             {/* map here  */}
             {productDetails &&
-              productDetails?.product_reviews.map((review) => {
+              productDetails?.product_ratings.map((review) => {
                 return (
                   <ReviewCard
-                    key={review.product_review_id}
+                    key={review.product_rating_id}
                     text={review.product_review}
+                    rating={review.product_rating}
+                    customer={review.customer_id}
+                    date={review.updated_at}
                   />
                 );
               })}
@@ -259,7 +264,9 @@ function ProductDetails({
           styles.floatingButton,
           pressed && styles.floatingButtonPressed,
         ]}
-        onPress={() => {}}
+        onPress={() => {
+          AddToCart(selectedProductId);
+        }}
       >
         <Text style={styles.floatingButtonText}>Add to Cart</Text>
       </Pressable>
@@ -271,6 +278,7 @@ function ProductDetails({
       <BottomOptionMenu
         setMenuVisibility={setMenuVisibility}
         setScreen={setScreen}
+        cartIconNumber={cartIconNumber}
       />
     </View>
   );
@@ -407,11 +415,11 @@ const styles = StyleSheet.create({
   },
 
   floatingButtonPressed: {
-    backgroundColor: "#E6A800", // darker shade on press
+    backgroundColor: "#E6A800",
   },
 
   floatingButtonText: {
-    color: "#000", // good contrast on yellow
+    color: "#000",
     fontSize: 16,
     fontWeight: "bold",
   },
